@@ -12,8 +12,14 @@ const app = new App({
 
 const {getdata,getdata2} = require('./getdata');
 
+
+app.message("type", async({message,say}) => {
+  await say(`${typeof(message)}`);
+  await say(`${typeof(say)}`);
+})
+
 // Listens to incoming messages that contain "hello"
-app.message('i am bored', async ({ message, say }) => {
+app.message('i am bored', async ({ message,say}) => {
     const response = await axios.request(getdata2);
     await say(`${response.data.body[0].setup}`);
     await say(`${response.data.body[0].punchline}`);
