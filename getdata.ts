@@ -1,4 +1,4 @@
-const options = {
+const options : object = {
     method: 'GET',
     url: 'https://programming-memes-images.p.rapidapi.com/v1/memes',
     headers: {
@@ -7,7 +7,7 @@ const options = {
     }
 };
   
-const options2 = {
+const options2 : object = {
       method: 'GET',
       url: 'https://dad-jokes.p.rapidapi.com/random/joke',
       headers: {

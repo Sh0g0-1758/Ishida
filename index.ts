@@ -10,15 +10,15 @@ const app = new App({
     appToken: process.env.SLACK_APP_TOKEN // add this
 });
 
-// const {getdata,getdata2} = require('./getdata');
+const {getdata,getdata2} = require('./getdata');
 
 app.message("type", async({message,say} : {message : object,say : Function}) => {
   await say(`${typeof(message)}`);
   await say(`${typeof(say)}`);
-})
-/*
+});
+
 // Listens to incoming messages that contain "hello"
-app.message('i am bored', async ({ message,say}) => {
+app.message('i am bored', async ({ message,say} : {message : {user : string},say : Function}) => {
     const response = await axios.request(getdata2);
     await say(`${response.data.body[0].setup}`);
     await say(`${response.data.body[0].punchline}`);
@@ -43,7 +43,7 @@ app.message('i am bored', async ({ message,say}) => {
       });
 });
 
-app.message('get a meme', async({message,say}) => {
+app.message('get a meme', async({message,say} : {message : object,say : Function}) => {
     const response = await axios.request(getdata);
     const img_url = response.data[0].image;
     await say({
@@ -65,7 +65,7 @@ app.message('get a meme', async({message,say}) => {
     })
 })
 
-app.action('button_click', async ({ body, ack, say }) => {
+app.action('button_click', async ({ack,say} : {ack : Function,say : Function}) => {
 // Acknowledge the action
 await ack();
 await say({
@@ -85,9 +85,9 @@ await say({
     ]
 })
 });
-*/
+
 (async () => {
   // Start your app
-  await app.start(process.env.PORT || 3000);
-  console.log('⚡️ Bolt app is running!');
+  await app.start(process.env.PORT);
+  console.log('ishida is running \(^o^)/ *.*.* \(^o^)/');
 })();
