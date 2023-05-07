@@ -10,14 +10,13 @@ const app = new App({
     appToken: process.env.SLACK_APP_TOKEN // add this
 });
 
-const {getdata,getdata2} = require('./getdata');
+// const {getdata,getdata2} = require('./getdata');
 
-
-app.message("type", async({message,say}) => {
+app.message("type", async({message,say} : {message : object,say : Function}) => {
   await say(`${typeof(message)}`);
   await say(`${typeof(say)}`);
 })
-
+/*
 // Listens to incoming messages that contain "hello"
 app.message('i am bored', async ({ message,say}) => {
     const response = await axios.request(getdata2);
@@ -86,7 +85,7 @@ await say({
     ]
 })
 });
-
+*/
 (async () => {
   // Start your app
   await app.start(process.env.PORT || 3000);
