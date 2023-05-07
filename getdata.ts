@@ -6,7 +6,7 @@ const options : object = {
       'X-RapidAPI-Host': 'programming-memes-images.p.rapidapi.com'
     }
 };
-  
+
 const options2 : object = {
       method: 'GET',
       url: 'https://dad-jokes.p.rapidapi.com/random/joke',

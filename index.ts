@@ -10,16 +10,15 @@ const app = new App({
     appToken: process.env.SLACK_APP_TOKEN // add this
 });
 
-const {getdata,getdata2} = require('./getdata');
+let {options : getdata,options2 : getdata2} = require('./getdata');
 
-app.message("type", async({message,say} : {message : object,say : Function}) => {
-  await say(`${typeof(message)}`);
-  await say(`${typeof(say)}`);
+app.message("help", async({message,say} : {message : object,say : Function}) => {
+  await say("the following commands work => [i am bored,get a meme] 乂⍱‿●乂");
 });
 
 // Listens to incoming messages that contain "hello"
 app.message('i am bored', async ({ message,say} : {message : {user : string},say : Function}) => {
-    const response = await axios.request(getdata2);
+    const response : {data : {body : [{setup : string,punchline : string}]}} = await axios.request(getdata2);
     await say(`${response.data.body[0].setup}`);
     await say(`${response.data.body[0].punchline}`);
     await say({
@@ -44,7 +43,7 @@ app.message('i am bored', async ({ message,say} : {message : {user : string},say
 });
 
 app.message('get a meme', async({message,say} : {message : object,say : Function}) => {
-    const response = await axios.request(getdata);
+    const response : {data : [{image : string}]} = await axios.request(getdata);
     const img_url = response.data[0].image;
     await say({
         blocks: [
@@ -89,5 +88,5 @@ await say({
 (async () => {
   // Start your app
   await app.start(process.env.PORT);
-  console.log('ishida is running \(^o^)/ *.*.* \(^o^)/');
+  console.log('ishida is running ヽ(•‿•)ノ');
 })();
